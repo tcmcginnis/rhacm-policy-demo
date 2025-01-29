@@ -14,9 +14,10 @@ https://github.com/open-cluster-management-io/policy-generator-plugin
 <br><br>
 
 
-#### My Automation for Openstack….. Also includes automation of ACM policies
+#### My automation for ACM with Openstack….. Also includes automation of ACM policies
 https://github.com/tcmcginnis/acm-openstack-automation
 <br>
+##### ... Also includes automation of ACM policies
 https://github.com/tcmcginnis/acm-openstack-automation/tree/main/roles/acm-add-cluster-policy/tasks
 
 
