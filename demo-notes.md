@@ -2,14 +2,16 @@
 ---
 #### ACM policy demo repo
 https://github.com/tcmcginnis/rhacm-policy-demo/blob/main/kustomization.yaml
-
+<br><br>
 
 #### Kustomize module and usage docs
 https://github.com/kubernetes-sigs/kustomize
+<br><br>
 
 
 #### ACM module for kustomize – usage and installation docs
 https://github.com/open-cluster-management-io/policy-generator-plugin
+<br><br>
 
 
 #### My Automation for Openstack….. Also includes automation of ACM policies
