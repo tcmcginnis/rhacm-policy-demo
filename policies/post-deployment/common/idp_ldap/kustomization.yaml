@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- cluster-oauth.yaml
+- ldap-bind-password.yaml
+#- ldap-ca-configmap.yaml

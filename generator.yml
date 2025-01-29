@@ -1,0 +1,24 @@
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: gen-policy-generator
+policyDefaults:
+  namespace: channel-postinstall-policies
+  remediationAction: inform
+  policySets:
+    - cluster-configs
+placementBindingDefaults:
+  name: "cluster-config-binding"
+
+policies:
+  - name: ocp-ldap-config
+    remediationAction: inform
+    manifests:
+      - path: base/idp_ldap/
+        complianceType: musthave
+
+policySets:
+  - name: post-install-policies
+    placement:
+      placementRuleName: "hub-only"

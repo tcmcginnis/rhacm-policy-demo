@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+#  - hub-only.yaml
+  - ocp-post-deployment-clusters.yaml
+  - ocp-release-4.8-clusters.yaml
+  - ocp-release-4.10-clusters.yaml

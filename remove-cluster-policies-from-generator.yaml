@@ -1,0 +1,38 @@
+ # Adds cluster specific policy definitions to the kustomize generator yaml
+ # Example:
+ #   ansible-playbook remove-cluster-policies-from-generator.yaml -e cluster_name=ocp-cddegt0107
+- hosts: localhost
+  user: root
+  vars:
+    GeneratorFile: policies/post-deployment/generator.yaml
+    clusterEnterTemplate: generator-cluster.template
+    placementFolder: policies/rhacm-placements/
+  tasks:
+
+   - name: Remove cluster specific policy definitions for {{ cluster_name }}
+     blockinfile:
+       path: '{{ GeneratorFile }}'
+ #       insertafter: "^policies:"
+ #       block: "{{ lookup('template', '{{ clusterEnterTemplate }}') }}"
+       marker: "# {mark} ANSIBLE MANAGED BLOCK - specific policies for cluster: {{ cluster_name }}"
+       state: absent
+
+   - name: Get list of config yamls in the acm folder
+     find:
+       paths: "{{ placementFolder }}"
+       patterns: "*.yaml,*.yml"
+     register: result
+
+   - name: run shell
+     shell: "echo  {{ item }}"
+     with_items:
+       - "{{ result['files'] | map(attribute='path') | list }}"
+
+   - name: Remove cluster name from placement definitions
+     lineinfile:
+       path: '{{ item }}'
+       insertafter: "^      values:"
+       line: "      - {{ cluster_name }}"
+       state: absent
+     with_items:
+       - "{{ result['files'] | map(attribute='path') | list }}"

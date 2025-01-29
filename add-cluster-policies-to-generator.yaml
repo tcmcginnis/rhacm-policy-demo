@@ -1,0 +1,17 @@
+ # Adds cluster specific policy definitions to the kustomize generator yaml
+ # Example:
+ #   ansible-playbook add-cluster-policies-to-generator.yaml -e cluster_name=ocp-cddegt0107
+- hosts: localhost
+  user: root
+  vars:
+    GeneratorFile: policies/post-deployment/generator.yaml
+    clusterEnterTemplate: generator-cluster.template
+  tasks:
+
+   - name: Add cluster specific policy definitions for {{ cluster_name }}
+     blockinfile:
+       path: '{{ GeneratorFile }}'
+       insertafter: "^policies:"
+       block: "{{ lookup('template', '{{ clusterEnterTemplate }}') }}"
+       marker: "# {mark} ANSIBLE MANAGED BLOCK - specific policies for cluster: {{ cluster_name }}"
+       state: present

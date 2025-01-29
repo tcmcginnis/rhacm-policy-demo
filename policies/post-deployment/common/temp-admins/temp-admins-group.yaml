@@ -1,0 +1,6 @@
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: temp-cluster-admins
+users:
+  - Your-User-Names-Go_Here

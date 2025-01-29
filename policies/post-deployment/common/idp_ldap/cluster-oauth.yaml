@@ -1,0 +1,28 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-25"
+  name: cluster
+spec:
+  identityProviders:
+  - name: ES
+    mappingMethod: claim 
+    type: LDAP
+    ldap:
+      attributes:
+        id: 
+        - dn
+        email: 
+        - mail
+        name: 
+        - cn
+        preferredUsername: 
+        - sAMAccountName
+      bindDN: "Your-Bind-DN"
+      bindPassword: 
+        name: ldap-bind-password
+      ca:
+        name: ldap-ca
+      insecure: false
+      url: "ldaps://Your-LDAP-URL"

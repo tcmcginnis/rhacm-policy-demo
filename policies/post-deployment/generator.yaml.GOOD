@@ -1,0 +1,69 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: post-deployment-policy-generator
+placementBindingDefaults:
+  name: binding-post-deployment
+policyDefaults:
+  namespace: channel-postinstall-policies
+ #remediationAction: inform
+  remediationAction: enforce
+  complianceType: musthave
+policies:
+# Specific yaml for OCP 4.8
+  - name: ocp-release-4.8
+    manifests:
+      - path: releases/4.8/
+    placement:
+      placementRuleName: "release-4.8-clusters"
+# Specific yaml for OCP 4.10
+  - name: ocp-release-4.10
+    manifests:
+      - path: releases/4.10/
+    placement:
+      placementRuleName: "release-4.10-clusters"
+
+# General post deployment configurations
+  - name: configure-ldap
+    manifests:
+      - path: common/idp_ldap/
+
+  - name: deploy-machineconfigs
+    manifests:
+      - path: common/machine_configs/
+
+  - name: disable-default-catalog-sources
+    manifests:
+      - path: common/disable-default-catalog-sources/
+
+  - name: infra-placement
+    manifests:
+      - path: common/infra-placement/
+
+  - name: proxy-custom-ca
+    manifests:
+      - path: common/proxy-custom-ca/
+
+  - name: temp-admins
+    manifests:
+      - path: common/temp-admins/
+
+policySets:
+  - name: ocp-post-deployment
+    description: "Policy sets for post Openshift cluster deployment"
+    policies:
+      - configure-ldap
+      - deploy-machineconfigs
+      - disable-default-catalog-sources
+      - infra-placement
+      - proxy-custom-ca
+      - temp-admins
+    placement:
+      placementRuleName: "ocp-post-deployment-clusters"  
+
+  #- name: ocp-post-deployment-release-specific
+  #  description: "Policy sets for post Openshift cluster deployment"
+  #  policies:
+  #    - ocp-release-4.8
+  #    - ocp-release-4.10
+###

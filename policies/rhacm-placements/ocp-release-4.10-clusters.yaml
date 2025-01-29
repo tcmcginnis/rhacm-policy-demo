@@ -1,0 +1,17 @@
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: release-4.10-clusters
+  namespace: channel-postinstall-policies
+spec:
+  clusterConditions:
+  - status: 'True'
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+    - key: name
+      operator: In
+      values:
+      - sample-cluster
+
