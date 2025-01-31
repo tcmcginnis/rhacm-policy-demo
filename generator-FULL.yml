@@ -4,7 +4,7 @@ kind: PolicyGenerator
 metadata:
   name: gen-policy-generator
 policyDefaults:
-  namespace: channel-demo-policies
+  namespace: channel-postinstall-policies
   remediationAction: inform
   policySets:
     - cluster-configs

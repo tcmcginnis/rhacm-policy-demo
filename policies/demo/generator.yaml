@@ -1,0 +1,26 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: post-deployment-policy-generator
+placementBindingDefaults:
+  name: binding-post-deployment
+policyDefaults:
+  namespace: channel-postinstall-policies
+ #remediationAction: inform
+  remediationAction: enforce
+  complianceType: musthave
+policies:
+# General post deployment configurations
+  - name: demo-namespace-must-exist
+    manifests:
+      - path: namespace/
+
+policySets:
+  - name: ocp-demo-deployment
+    description: "Demo Policy sets for post Openshift cluster deployment"
+    policies:
+      - demo-namespace-must-exist
+    placement:
+      placementRuleName: "hub-only"
+
+###
