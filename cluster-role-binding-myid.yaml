@@ -12,3 +12,4 @@ roleRef:
   kind: ClusterRole
   name: 'open-cluster-management:subscription-admin'
 
+### https://github.com/open-cluster-management-io/policy-collection
