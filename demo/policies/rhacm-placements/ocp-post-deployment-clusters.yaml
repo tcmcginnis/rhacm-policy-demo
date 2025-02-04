@@ -13,5 +13,6 @@ spec:
     - key: name
       operator: In
       values:
-      - sample-cluster
+      - local-cluster
+#      - sample-cluster
 
