@@ -4,10 +4,11 @@
 https://github.com/tcmcginnis/rhacm-policy-demo/blob/main/kustomization.yaml
 <br><br>
 
+### Kustomize
 #### Kustomize module and usage docs
 https://github.com/kubernetes-sigs/kustomize
 
-# Policy Generator
+#### Policy Generator
 https://github.com/stolostron/policy-generator-plugin
 <br><br>
 
