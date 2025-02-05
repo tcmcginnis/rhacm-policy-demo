@@ -3,7 +3,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: release-4.12-clusters
-  namespace: channel-postinstall-policies
+  namespace: open-cluster-management
 spec:
   clusterConditions:
   - status: 'True'

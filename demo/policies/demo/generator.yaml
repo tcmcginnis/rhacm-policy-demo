@@ -5,7 +5,7 @@ metadata:
 placementBindingDefaults:
   name: binding-post-deployment
 policyDefaults:
-  namespace: channel-postinstall-policies
+  namespace: open-cluster-management
  #remediationAction: inform
   remediationAction: enforce
   complianceType: musthave
