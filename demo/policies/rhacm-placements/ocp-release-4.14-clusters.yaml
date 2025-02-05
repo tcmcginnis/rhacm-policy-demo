@@ -17,4 +17,5 @@ spec:
     - key: name
       operator: In
       values:
+      - sample-ocp414-cluster
 
