@@ -6,8 +6,8 @@ placementBindingDefaults:
   name: binding-post-deployment
 policyDefaults:
   namespace: open-cluster-management
- #remediationAction: inform
-  remediationAction: enforce
+  remediationAction: inform
+ #remediationAction: enforce
   complianceType: musthave
 policies:
 # General post deployment configurations
